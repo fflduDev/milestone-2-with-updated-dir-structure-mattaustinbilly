@@ -38,6 +38,13 @@ class Contact {
         
         return Objects.equals(name, contact.name);
     }
+    public String getName() {
+        return name;
+    }
+    
+    public List<PhonebookEntry> getPhonebookEntries() {
+        return entries;
+    }    
 	@Override
     public int hashCode() {
         //hash code calculation based on the 'name' field
