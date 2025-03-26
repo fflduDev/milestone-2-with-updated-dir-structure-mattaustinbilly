@@ -20,12 +20,25 @@ public class TestHarness {
 		//display non equality using your overriden equals method
 		//display equality using your overriden equals method
 
+		Contact xx = new Contact("bob");
+		Contact yy = new Contact("rob");
+		Contact zz = new Contact("bob");
+
+		TEST_Equals(xx, yy);
+		TEST_Equals(xx, zz);
+
 		TEST_Equals(p1, p2);
 		TEST_Equals(p3, p3);
 		
 		//TODO: 2 cases:
 		//display hashcode case that demonstrates collision
 		//display hashcode case that demonstrates non- collision
+
+		Contact aa = new Contact("elon");
+		Contact bb = new Contact("noel");
+
+		TEST_hashcode(aa, bb);
+		TEST_hashcode(aa, p4);
 
 		TEST_hashcode(p1, p3);
 		TEST_hashcode(p2, p3);
@@ -43,7 +56,7 @@ public class TestHarness {
 		// 1) a call to search finds the user and displays their entries 
 		//(2) a call to search does not find the user & displays some detail illustrating same
 		TEST_Search(phonebookHander, sortedContacts, "Juan");
-		 
+		TEST_Search(phonebookHander, sortedContacts, "notfoundtest");
 
 	}
 
@@ -62,6 +75,9 @@ public class TestHarness {
 		
 		System.out.println("\n -- Search results for " + name + " -- ");
 		List<PhonebookEntry> selectedEntries = phonebookHander.binarySearch(sortedContacts, name);
+		if (selectedEntries.isEmpty()) {
+			System.out.println("no entries found for " + name);
+		}
 		for (PhonebookEntry entry : selectedEntries) {
 			
 			System.out.println("Entries for " + name + " " +  entry.getType() + " " + entry.getPhoneNumber());
